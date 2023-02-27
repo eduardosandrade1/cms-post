@@ -12,6 +12,11 @@ class Input extends Component
     public $min;
     public $max;
     public $placeholder;
+    public $autofocus;
+    public $value;
+    public $disabled;
+    public $alt;
+    public $readonly;
 
     public function render()
     {
@@ -21,7 +26,12 @@ class Input extends Component
                 'label' => $this->label,
                 'min' => $this->min,
                 'max' => $this->max,
-                'placeholder' => $this->placeholder
+                'placeholder' => $this->placeholder,
+                'autofocus' => $this->autofocus,
+                'value' => $this->value,
+                'disabled' => $this->disabled,
+                'alt' => $this->alt,
+                'readonly' => $this->readonly,
             ]);
 
     }
