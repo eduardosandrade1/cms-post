@@ -1,9 +1,6 @@
 <div class="input-group mb-3">
-    @if ($type != 'file')
-        <span for="{{$name}}" class="input-group-text" id="inputGroup-sizing-default">{{$label}}</span>
-    @endif
-
-    <input
+    <span for="{{$name}}" class="input-group-text" id="inputGroup-sizing-default">{{$label}}</span>
+    <textarea
         type="{{$type ?? 'text'}}"
 
         name="{{$name ? 'name='.$name : ''}}"
@@ -24,10 +21,9 @@
 
         {{$readonly ? 'readonly' : ''}}
 
-        wire:model="{{$name}}"
 
         class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-</div>
+    </textarea>
 
 @if($errors->has($name))
     <div class="alert alert-danger" role="alert">
