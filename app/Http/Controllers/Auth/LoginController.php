@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\LoginRequest;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,25 +19,25 @@ class LoginController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(LoginRequest $request)
     {
-        try {
+        // try {
 
-            $attempt = Auth::attempt([
-                'email' => $request->post('email'),
-                'password' => $request->post('password'),
-            ]);
+        //     $attempt = Auth::attempt([
+        //         'email' => $request->post('email'),
+        //         'password' => $request->post('password'),
+        //     ]);
 
-            if ( ! $attempt ) {
-                return redirect()->route('login.create')->withErrors("Login ou senha inválidos");
-            }
+        //     if ( ! $attempt ) {
+        //         return redirect()->route('login.create')->withErrors("Login ou senha inválidos");
+        //     }
 
-            return redirect()->route('home');
+        //     return redirect()->route('home');
 
-        } catch (Exception $e) {
-            Log::error($e->getMessage() . " " . $e->getLine());
-            return redirect()->route('login.create');
-        }
+        // } catch (Exception $e) {
+        //     Log::error($e->getMessage() . " " . $e->getLine());
+        //     return redirect()->route('login.create');
+        // }
     }
 
 
