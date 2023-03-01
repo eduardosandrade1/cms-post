@@ -1,18 +1,16 @@
-<form method="post" wire:submit.prevent="create">
-    @livewire('input', ['name' => 'image', 'label' => 'Image', 'type' => 'file'])
-    @livewire('input', ['name' => 'image_order', 'label' => 'Image order', 'type' => 'number', 'min' => 1, 'max' => 4])
-    <br>
+<form wire:submit.prevent="{{$typeSubmit}}">
 
-    @livewire('input', ['name' => 'title', 'label' => 'Title', 'type' => 'text'])
-    @livewire('input', ['name' => 'title_order', 'label' => 'Title order', 'type' => 'number', 'min' => 1, 'max' => 4])
-    <br>
-    @livewire('input', ['name' => 'subtitle', 'label' => 'Subtitle', 'type' => 'text'])
-    @livewire('input', ['name' => 'subtitle_order', 'label' => 'Subtitle order', 'type' => 'number', 'min' => 1, 'max' => 4])
-    <br>
+    <x-input wire:model.lazy="image" name="image" type="file" placeholder="Imagem" label="Imagem"/>
+    <x-input wire:model.lazy="image_order" name="image_order" type="number" placeholder="Ordem da imagem" label="Ordem da imagem" min="1" max="4"/>
 
-    @livewire('textarea', ['name' => 'content', 'label' => 'Content'])
-    @livewire('input', ['name' => 'content_order', 'label' => 'Content order', 'type' => 'number', 'min' => 1, 'max' => 4])
-    <br>
+    <x-input wire:model.lazy="title" name="title" type="text" placeholder="Titulo" label="Titulo"/>
+    <x-input wire:model.lazy="title_order" name="title_order" type="number" placeholder="Ordem do titulo" label="Ordem do titulo" min="1" max="4"/>
+
+    <x-input wire:model.lazy="subtitle" name="subtitle" type="text" placeholder="Subtitulo" label="Subtitulo"/>
+    <x-input wire:model.lazy="subtitle_order" name="subtitle_order" type="number" placeholder="Ordem do subtitulo" label="Ordem do subtitulo" min="1" max="4"/>
+
+    <x-input wire:model.lazy="content" name="content" type="text" placeholder="Corpo" label="Corpo"/>
+    <x-input wire:model.lazy="content_order" name="content_order" type="number" placeholder="Ordem do corpo" label="Ordem do corpo" min="1" max="4"/>
 
     @livewire('button', ['type' => 'submit', 'value' => 'Salvar'])
 </form>
