@@ -1,10 +1,12 @@
 <?php
 
+use App\Models\Admin;
+use App\Models\ItemLayout;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItemLayoutsTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +15,9 @@ class CreateItemLayoutsTable extends Migration
      */
     public function up()
     {
-        Schema::create('item_layouts', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->text('content');
-            $table->enum('type', [
-                'image',
-                'title',
-                'subtitle',
-                'description',
-            ]);
+            $table->foreignIdFor(Admin::class);
             $table->timestamps();
         });
     }
@@ -33,6 +29,6 @@ class CreateItemLayoutsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item_layouts');
+        Schema::dropIfExists('posts');
     }
 }

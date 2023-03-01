@@ -3,19 +3,13 @@
 namespace App\Http\Controllers\Admin\Post;
 
 use App\Http\Controllers\Controller;
+use App\Models\ItemLayout;
+use App\Models\Post;
 use Illuminate\Http\Request;
+use Livewire\WithFileUploads;
 
 class RegisterPost extends Controller
 {
-    public $image;
-    public $image_order;
-    public $title;
-    public $title_order;
-    public $subtitle;
-    public $subtitle_order;
-    public $content;
-    public $content_order;
-
     public function index()
     {
     }
@@ -27,7 +21,6 @@ class RegisterPost extends Controller
 
     public function store()
     {
-        dd($this->image_order);
     }
 
     /**
