@@ -12,5 +12,5 @@
     <x-input wire:model.lazy="content" name="content" type="text" placeholder="Corpo" label="Corpo"/>
     <x-input wire:model.lazy="content_order" name="content_order" type="number" placeholder="Ordem do corpo" label="Ordem do corpo" min="1" max="4"/>
 
-    @livewire('button', ['type' => 'submit', 'value' => 'Salvar'])
+    <x-button type="submit" text="Salvar"></x-button>
 </form>
