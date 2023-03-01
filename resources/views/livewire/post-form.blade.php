@@ -1,4 +1,4 @@
-<form wire:submit.prevent="{{$typeSubmit}}">
+<form wire:submit.prevent="create">
 
     <x-input wire:model.lazy="image" name="image" type="file" placeholder="Imagem" label="Imagem"/>
     <x-input wire:model.lazy="image_order" name="image_order" type="number" placeholder="Ordem da imagem" label="Ordem da imagem" min="1" max="4"/>

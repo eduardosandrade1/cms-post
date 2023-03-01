@@ -16,13 +16,13 @@ class CreateItemLayoutsTable extends Migration
     {
         Schema::create('item_layouts', function (Blueprint $table) {
             $table->id();
-            $table->text('content');
+            $table->text('content')->nullable();
             $table->enum('type', [
                 'image',
                 'title',
                 'subtitle',
                 'description',
-            ]);
+            ])->nullable();
             $table->integer('order');
             $table->foreignIdFor(Post::class);
             $table->timestamps();

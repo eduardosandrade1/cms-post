@@ -2,12 +2,15 @@
 
 namespace Tests\Feature;
 
+use App\Http\Livewire\PostForm;
 use App\Models\ItemLayout;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
 use Tests\TestCase;
 
 class RegisterPostsTest extends TestCase
 {
+    use RefreshDatabase;
 
     public function test_render_register_post()
     {
@@ -18,20 +21,17 @@ class RegisterPostsTest extends TestCase
 
     public function test_register_post()
     {
-        $response = $this->post('/registrar/post', [
-            'image' => 'rotade/teste.jpg',
-            'title_order' => 4,
-            'title' => 'Teste Titulo',
-            'title_order' => 1,
-            'subtitle' => 'Teste Subtitulo',
-            'subtitle_order' => 2,
-            'content' => 'Teste Corpo',
-            'content_order' => 3,
-        ]);
+        Livewire::test(PostForm::class)
+            ->set('title', 'Titulo Teste')
+            ->set('title_order', 1)
+            ->set('subtitle', 'Subtitulo Teste')
+            ->set('subtitle_order', 2)
+            ->set('content', 'Corpo Teste')
+            ->set('content_order', 3)
+            ->call('create');
 
-        $response->assertStatus(200);
-        $response->asserttEqual('Post registrado.');
-        $response->assertViewHas('admin.index');
-
+            $this->assertTrue(ItemLayout::where('content', 'Titulo Teste')->exists());
+            $this->assertTrue(ItemLayout::where('content', 'Subtitulo Teste')->exists());
+            $this->assertTrue(ItemLayout::where('content', 'Corpo Teste')->exists());
     }
 }

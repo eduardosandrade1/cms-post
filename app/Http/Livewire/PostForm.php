@@ -24,19 +24,19 @@ class PostForm extends Component
     public $content_order;
 
     protected $rules = [
-        'image' => 'required|file',
-        'image_order' => 'required|numeric',
-        'title' => 'required|string',
-        'title_order' => 'required|numeric',
-        'subtitle' => 'required|string',
-        'subtitle_order' => 'required|numeric',
-        'content' => 'required|string',
-        'content_order' => 'required|numeric',
+        'image' => 'nullable|file',
+        'image_order' => 'nullable|numeric',
+        'title' => 'nullable|string',
+        'title_order' => 'nullable|numeric',
+        'subtitle' => 'nullable|string',
+        'subtitle_order' => 'nullable|numeric',
+        'content' => 'nullable|string',
+        'content_order' => 'nullable|numeric',
     ];
 
     public function render()
     {
-        dd(Post::where('id', 1)->get()->itens);
+
         return view('livewire.post-form');
     }
 
