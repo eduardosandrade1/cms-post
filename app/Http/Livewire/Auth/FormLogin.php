@@ -45,9 +45,11 @@ class FormLogin extends Component
 
         if ( ! $attempt ) {
 
+            $this->addError('incorrect-credentials', 'Login ou senha inválidos');
+
             $this->resetInputs();
 
-            $this->addError('incorrect-credentials', 'Login ou senha inválidos');
+            return back()->withErrors('Login e/ou senha inválido!');
 
         }
 
