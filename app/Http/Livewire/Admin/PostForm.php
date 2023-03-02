@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Livewire\Admin;
-
 use App\Actions\SaveItemPost;
 use App\Actions\SavePost;
 use App\Models\Post;
@@ -25,13 +24,13 @@ class PostForm extends Component
 
     protected $rules = [
         'image' => 'nullable|file',
-        'image_order' => 'nullable|numeric',
-        'title' => 'nullable|string',
-        'title_order' => 'nullable|numeric',
-        'subtitle' => 'nullable|string',
-        'subtitle_order' => 'nullable|numeric',
-        'content' => 'nullable|string',
-        'content_order' => 'nullable|numeric',
+        'image_order' => 'required|numeric',
+        'title' => 'required|string',
+        'title_order' => 'required|numeric',
+        'subtitle' => 'required|string',
+        'subtitle_order' => 'required|numeric',
+        'content' => 'required|string',
+        'content_order' => 'required|numeric',
     ];
 
     public function render()
@@ -57,6 +56,7 @@ class PostForm extends Component
         ],
         $post->id
         ))->execute();
+
     }
 
     public function update(){

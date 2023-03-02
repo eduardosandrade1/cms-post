@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    @livewireStyles
 </head>
 
 <body class="h-full">
@@ -27,16 +28,13 @@
             <main class="flex-1">
                 <div class="py-6">
                     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <h1 class="text-2xl font-semibold text-gray-900">Dashboard</h1>
-                    </div>
-                    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         {{$slot}}
                     </div>
                 </div>
             </main>
         </div>
     </div>
-
+    @livewireScripts
 </body>
 
 </html>
