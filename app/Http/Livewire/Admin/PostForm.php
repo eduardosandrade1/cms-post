@@ -36,7 +36,7 @@ class PostForm extends Component
 
     public function render()
     {
-        return view('livewire.admin.post-form')->layout('layouts.admin.app');
+        return view('livewire.admin.post-form')->layout('layouts.admin.app', ['page' => 'register-post']);
     }
 
     public function create(){

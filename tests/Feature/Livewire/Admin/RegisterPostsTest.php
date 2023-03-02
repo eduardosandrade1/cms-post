@@ -1,9 +1,8 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Livewire\Admin;
 
-use App\Http\Livewire\PostForm;
-use App\Models\Admin;
+use App\Http\Livewire\Admin\PostForm;
 use App\Models\ItemLayout;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -20,7 +19,7 @@ class RegisterPostsTest extends TestCase
 
         $this->assertAuthenticated();
 
-        $response = $this->get('/registrar/post');
+        $response = $this->get('admin/registrar/post');
 
         $response->assertStatus(200);
     }
@@ -47,19 +46,10 @@ class RegisterPostsTest extends TestCase
 
     public function test_register_post_no_authenticate()
     {
-        $this->assertAuthenticatedAs();
+        $response = $this->get('admin/registrar/post');
 
-        Livewire::test(PostForm::class)
-            ->set('title', 'Titulo Teste')
-            ->set('title_order', 1)
-            ->set('subtitle', 'Subtitulo Teste')
-            ->set('subtitle_order', 2)
-            ->set('content', 'Corpo Teste')
-            ->set('content_order', 3)
-            ->call('create');
+        $response->assertStatus(302);
 
-            $this->assertTrue(ItemLayout::where('content', 'Titulo Teste')->exists());
-            $this->assertTrue(ItemLayout::where('content', 'Subtitulo Teste')->exists());
-            $this->assertTrue(ItemLayout::where('content', 'Corpo Teste')->exists());
+        $this->assertGuest();
     }
 }
