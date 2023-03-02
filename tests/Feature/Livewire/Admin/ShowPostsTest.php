@@ -15,11 +15,4 @@ class ShowPostsTest extends TestCase
 
         $component->assertStatus(200);
     }
-
-    // public function the_component_can_render()
-    // {
-    //     $component = Livewire::test(ShowPosts::class);
-
-    //     $component->assertStatus(200);
-    // }
 }
