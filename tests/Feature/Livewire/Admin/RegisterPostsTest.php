@@ -46,10 +46,10 @@ class RegisterPostsTest extends TestCase
 
     public function test_register_post_no_authenticate()
     {
+        $this->assertGuest();
+
         $response = $this->get('admin/registrar/post');
 
-        $response->assertStatus(302);
-
-        $this->assertGuest();
+        $response->assertRedirect(route('login.create'));
     }
 }
