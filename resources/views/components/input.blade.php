@@ -17,5 +17,5 @@
 
         aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
     />
-    @error($name)<span class="error">{{ $message }}</span> @enderror
+    @error($name)<span class="help-block text-danger">{{ $message }}</span> @enderror
 </div>

@@ -6,7 +6,7 @@
 @if ( ! empty($status) )
 
     <div {{ $attributes->merge([' class' => 'alert alert-'.$status ]) }} >
-        {{ $message }}
+        {!! $message !!}
     </div>
 
 @endif

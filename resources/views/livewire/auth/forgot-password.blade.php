@@ -1,5 +1,9 @@
 <form wire:submit.prevent="sendLinkResetPassword" class="p-5 mb-4 bg-light rounded-3">
 
+    @if ($messageSuccess)
+        <x-alert status="success" message="{{ $messageSuccess }}" class="text-center"></x-alert>
+    @endif
+
     @if ($errors->any())
         @foreach ($errors->all() as $errorMessage)
             <x-alert status="danger" message="{{$errorMessage}}" class="text-center"></x-alert>

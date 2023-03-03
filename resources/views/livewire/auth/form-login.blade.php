@@ -9,15 +9,17 @@
         <x-input type="email" name="email" wire:model.lazy="email" id="email" autofocus placeholder="Email Address" label="Email address"></x-input>
 
     </div>
+
+    <div class="form-group text-end">
+        <a href="{{ route('forgot-password.create') }}">Forgot you password?</a>
+    </div>
+
     <div class="form-group">
 
         <x-input type="password" name="password" wire:model.lazy="password" placeholder="password" label="password"></x-input>
 
     </div>
 
-    <div class="form-group">
-        <a href="{{ route('forgot-password.create') }}">Forgot you password?</a>
-    </div>
 
     <div class="mt-3">
         <x-button type="submit" text="Submit" disabled="true"></x-button>
