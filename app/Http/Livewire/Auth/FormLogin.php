@@ -2,8 +2,7 @@
 
 namespace App\Http\Livewire\Auth;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
+use App\Actions\Auth\DoLogin;
 use Livewire\Component;
 
 class FormLogin extends Component
@@ -38,10 +37,7 @@ class FormLogin extends Component
             ],
         ]);
 
-        $attempt = Auth::attempt([
-            'email' => $this->email,
-            'password' => $this->password,
-        ]);
+        $attempt = (new DoLogin())->execute($this->email, $this->password);
 
         if ( ! $attempt ) {
 
