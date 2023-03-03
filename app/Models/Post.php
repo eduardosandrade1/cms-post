@@ -12,6 +12,6 @@ class Post extends Model
 
     public function itens(): HasMany
     {
-        return $this->hasMany(ItemLayout::class);
+        return $this->hasMany(ItemLayout::class)->orderBy('order');
     }
 }
