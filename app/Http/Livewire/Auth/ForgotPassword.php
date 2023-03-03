@@ -22,6 +22,11 @@ class ForgotPassword extends Component
         ]);
     }
 
+    private function clearInputs()
+    {
+        $this->email = '';
+    }
+
     public function sendLinkResetPassword()
     {
         $this->validate([
@@ -38,6 +43,7 @@ class ForgotPassword extends Component
 
         if ( $status === Password::RESET_LINK_SENT ) {
             $this->messageSuccess = "Link enviado para eu email com sucesso!";
+            $this->clearInputs();
             return;
         }
 

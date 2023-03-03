@@ -49,7 +49,7 @@ class FormLogin extends Component
 
             $this->resetInputs();
 
-            return back()->withErrors('Login e/ou senha inválido!');
+            return;
 
         }
 
