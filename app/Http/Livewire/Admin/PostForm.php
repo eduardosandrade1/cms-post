@@ -24,7 +24,7 @@ class PostForm extends Component
 
     protected $rules = [
         'image' => 'nullable|file',
-        'image_order' => 'required|numeric',
+        'image_order' => 'nullable|numeric',
         'title' => 'required|string',
         'title_order' => 'required|numeric',
         'subtitle' => 'required|string',

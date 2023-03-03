@@ -8,7 +8,6 @@ final class GetPostItens implements PostItensContract
 {
     private $admin;
     private $post;
-    private $listPosts;
 
     public function __construct($admin, $post){
         $this->admin = $admin;

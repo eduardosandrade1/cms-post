@@ -19,9 +19,6 @@
             <p>{{$item->content}}</p>
             <p>{{$item->order}}</p>
             <p>{{$item->post_id}}</p>
-            <br>
-            <hr>
-            <br>
         @endforeach
     @endif
     <br><br><br>
