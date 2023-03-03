@@ -49,7 +49,7 @@ class FormLogin extends Component
 
         }
 
-        return redirect()->route('home');
+        return redirect()->route('web.view-posts');
 
     }
 }
