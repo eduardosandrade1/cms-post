@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Livewire\Admin;
 
-use App\Http\Livewire\Admin\ShowPosts;
+use App\Http\Livewire\Admin\PostForm;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
@@ -17,8 +17,19 @@ class ShowPostsTest extends TestCase
     {
         Livewire::actingAs(User::factory()->create());
 
-        $component = Livewire::test(ShowPosts::class);
+        $this->assertAuthenticated();
 
-        $component->assertStatus(200);
+        Livewire::test(PostForm::class)
+            ->set('title', 'Titulo Teste')
+            ->set('title_order', 1)
+            ->set('subtitle', 'Subtitulo Teste')
+            ->set('subtitle_order', 2)
+            ->set('content', 'Corpo Teste')
+            ->set('content_order', 3)
+            ->call('create');
+
+        $response = $this->get('admin/listar/posts');
+
+        $response->assertStatus(200);
     }
 }

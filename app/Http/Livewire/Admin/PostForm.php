@@ -1,8 +1,13 @@
 <?php
 
 namespace App\Http\Livewire\Admin;
+
+use App\Actions\GetPostItem;
+use App\Actions\GetPostItens;
 use App\Actions\SaveItemPost;
 use App\Actions\SavePost;
+use App\Actions\UpdateItemPost;
+use App\Models\ItemLayout;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -12,18 +17,24 @@ class PostForm extends Component
 {
     use WithFileUploads;
 
+    public $method;
+    public $idPost;
     public $typeSubmit;
     public $image;
     public $image_order;
+    public $image_id;
     public $title;
     public $title_order;
+    public $title_id;
     public $subtitle;
     public $subtitle_order;
+    public $subtitle_id;
     public $content;
     public $content_order;
+    public $content_id;
 
     protected $rules = [
-        'image' => 'nullable|file',
+        'image' => 'nullable',
         'image_order' => 'nullable|numeric',
         'title' => 'required|string',
         'title_order' => 'required|numeric',
@@ -42,7 +53,7 @@ class PostForm extends Component
 
         $this->validate();
 
-        $post = (new SavePost(Auth::user()->id,new Post()))->execute();
+        $post = (new SavePost(Auth::user()->id, new Post()))->execute();
 
         (new SaveItemPost([
             'image' => $this->image,
@@ -57,22 +68,5 @@ class PostForm extends Component
         $post->id
         ))->execute();
 
-    }
-
-    public function update(){
-
-        $this->validate();
-
-        dd(
-            $this->image,
-            $this->image_order,
-            $this->title,
-            $this->title_order,
-            $this->subtitle,
-            $this->subtitle_order,
-            $this->content,
-            $this->content_order,
-            'updated',
-        );
     }
 }

@@ -1,7 +1,7 @@
-@props(['name', 'type', 'label', 'placeholder', 'id' => $name])
+@props(['name', 'type', 'label' => null, 'placeholder', 'id' => $name])
 
 <div class="input-group mb-3">
-    @if ($type != 'file')
+    @if ($type != 'file' || $label != null)
         <span for="{{$name}}" class="input-group-text" id="inputGroup-sizing-default">{{$label}}</span>
     @endif
     <input
@@ -19,3 +19,4 @@
     />
     @error($name)<span class="help-block text-danger">{{ $message }}</span> @enderror
 </div>
+

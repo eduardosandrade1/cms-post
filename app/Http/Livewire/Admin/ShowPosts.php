@@ -16,6 +16,6 @@ class ShowPosts extends Component
     {
         $this->posts = (new GetPostItens(Auth::user(), new Post()))->execute();
 
-        return view('livewire.admin.show-posts')->layout('layouts.admin.app', ['page' => 'list-post']);
+        return view('livewire.admin.show-posts')->layout('layouts.admin.app', ['page' => 'list-posts']);
     }
 }
