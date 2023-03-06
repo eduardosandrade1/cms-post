@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Livewire\Auth;
+
+use App\Actions\Auth\ResetPasswordLink;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
@@ -53,23 +55,7 @@ class ForgotPasswordLink extends Component
     public function saveNewPassword()
     {
 
-        $status = Password::reset(
-            [
-                'email' => $this->email,
-                'password' => $this->password,
-                'password_confirmation' => $this->password_confirmation,
-                'token' => $this->token
-            ],
-            function ($user, $password) {
-                $user->forceFill([
-                    'password' => Hash::make($password)
-                ])->setRememberToken(Str::random(60));
-
-                $user->save();
-
-                event(new PasswordReset($user));
-            }
-        );
+        $status = (new ResetPasswordLink())->execute($this->email, $this->password, $this->password_confirmation, $this->token);
 
         if ( $status === Password::PASSWORD_RESET ) {
             $this->messageSuccess = "Senha resetada com sucesso! Faça seu login com seus novos dados <a href='".route('login.create')."' >Aqui</a>";

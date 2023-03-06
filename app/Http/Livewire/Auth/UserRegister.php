@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Auth;
 
+use App\Actions\Auth\RegisterUser;
 use App\Models\User;
 use Livewire\Component;
 
@@ -52,18 +53,14 @@ class UserRegister extends Component
     {
         $this->validate();
 
-        if ( User::where('email', $this->email)->exists() ) {
+        $registerUser = (new RegisterUser())->execute($this->name, $this->email, $this->password);
+
+        if (  RegisterUser::USER_EMAIL_EXIST_DATABASE === $registerUser ) {
             $this->addError('exist-email', "Email já cadastrado na nossa base. Por favor, tente outro!");
             return;
         }
 
-        $user = User::insert([
-            'name' => $this->name,
-            'email' => $this->email,
-            'password' => bcrypt($this->password),
-        ]);
-
-        if ( $user ) {
+        else if ( RegisterUser::USER_SUCCESS === $registerUser ) {
             $this->successMessage = "Usuário cadastrado com sucesso!";
             return;
         }

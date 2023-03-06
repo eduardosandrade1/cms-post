@@ -35,7 +35,7 @@ class FormLoginTest extends TestCase
         $component->set('email', $user->email)
                     ->set('password', 'password')
                     ->call('doLogin')
-                    ->assertRedirect(route('home'));
+                    ->assertRedirect(route('web.view-posts'));
 
     }
 
