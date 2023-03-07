@@ -23,14 +23,14 @@ final class UpdateItemPost implements ActionUpdateItemContracts
 
     private function updateItemLayoutImage(): void
     {
-        if(!empty($this->parameters['image'])){
+        if(!empty($this->parameters['image']) && !is_string($this->parameters['image'])){
             $path = $this->parameters['image']->store('/post', 'public');
-
-            ItemLayout::where('id', $this->parameters['image_id'])->update([
-                'content' => $path,
-                'order' => $this->parameters['image_order'],
-            ]);
         }
+
+        ItemLayout::where('id', $this->parameters['image_id'])->update([
+            'content' => $path ?? $this->parameters['image'],
+            'order' => $this->parameters['image_order'],
+        ]);
     }
 
     private function updateItemLayoutTitle(): void

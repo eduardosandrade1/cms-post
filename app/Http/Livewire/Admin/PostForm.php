@@ -22,27 +22,13 @@ class PostForm extends Component
     public $typeSubmit;
     public $image;
     public $image_order;
-    public $image_id;
     public $title;
     public $title_order;
-    public $title_id;
     public $subtitle;
     public $subtitle_order;
-    public $subtitle_id;
     public $content;
     public $content_order;
-    public $content_id;
-
-    protected $rules = [
-        'image' => 'nullable',
-        'image_order' => 'nullable|numeric',
-        'title' => 'required|string',
-        'title_order' => 'required|numeric',
-        'subtitle' => 'required|string',
-        'subtitle_order' => 'required|numeric',
-        'content' => 'required|string',
-        'content_order' => 'required|numeric',
-    ];
+    public $register = false;
 
     public function render()
     {
@@ -51,7 +37,16 @@ class PostForm extends Component
 
     public function create(){
 
-        $this->validate();
+        $this->validate([
+            'image' => ['nullable'],
+            'image_order' => ['nullable', 'integer'],
+            'title' => ['required', 'string'],
+            'title_order' => ['required', 'integer'],
+            'subtitle' => ['required', 'string'],
+            'subtitle_order' => ['required', 'integer'],
+            'content' => ['required', 'string'],
+            'content_order' => ['required', 'integer'],
+        ]);
 
         $post = (new SavePost(Auth::user()->id, new Post()))->execute();
 
@@ -68,5 +63,18 @@ class PostForm extends Component
         $post->id
         ))->execute();
 
+        self::clear();
+        $this->register = true;
+    }
+
+    public function clear(){
+        $this->image = '';
+        $this->image_order = '';
+        $this->title = '';
+        $this->title_order = '';
+        $this->subtitle = '';
+        $this->subtitle_order = '';
+        $this->content = '';
+        $this->content_order = '';
     }
 }

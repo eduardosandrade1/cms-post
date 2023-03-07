@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Admin::class);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
