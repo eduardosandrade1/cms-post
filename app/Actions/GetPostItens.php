@@ -16,6 +16,8 @@ final class GetPostItens implements PostItensContract
 
     public function execute()
     {
-        return $this->post::with('itens')->orderByDesc('order')->where('admin_id', $this->admin->id)->first()->get();
+        if(count($this->post::all()) > 0){
+            return $this->post::with('itens')->orderByDesc('order')->where('admin_id', $this->admin->id)->first()->get();
+        }
     }
 }
