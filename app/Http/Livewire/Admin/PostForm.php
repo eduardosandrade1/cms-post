@@ -2,12 +2,8 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Actions\GetPostItem;
-use App\Actions\GetPostItens;
 use App\Actions\SaveItemPost;
 use App\Actions\SavePost;
-use App\Actions\UpdateItemPost;
-use App\Models\ItemLayout;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
