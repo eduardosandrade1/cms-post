@@ -6,7 +6,7 @@ use App\Actions\Auth\RegisterUser;
 use App\Actions\Auth\RegisterUserAdmin;
 use Livewire\Component;
 
-class RegisterUsuarioAdmin extends Component
+class RegisterAdmin extends Component
 {
     public $successMessage;
 

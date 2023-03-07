@@ -1,12 +1,8 @@
 <?php
 
-use App\Actions\Auth\RegisterUser;
-use App\Actions\Auth\RegisterUserAdmin;
 use App\Http\Livewire\Admin\Dashboard;
-use App\Http\Livewire\Admin\Error;
 use App\Http\Livewire\Admin\PostForm;
 use App\Http\Livewire\Admin\RegisterAdmin;
-use App\Http\Livewire\Admin\RegisterUsuario;
 use App\Http\Livewire\Admin\ShowPost;
 use App\Http\Livewire\Admin\ShowPostDeactivate;
 use App\Http\Livewire\Admin\ShowPosts;
@@ -15,7 +11,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware([
     'auth',
-    'admin.access'
     ])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/registrar/post', PostForm::class)->name('register.post');

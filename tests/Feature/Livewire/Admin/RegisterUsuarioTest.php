@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Livewire\Admin;
 
+use App\Http\Livewire\Admin\RegisterAdmin;
 use App\Http\Livewire\Admin\RegisterUsuario;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -13,7 +14,7 @@ class RegisterUsuarioTest extends TestCase
     /** @test */
     public function the_component_can_render()
     {
-        $component = Livewire::test(RegisterUsuario::class);
+        $component = Livewire::test(RegisterAdmin::class);
 
         $component->assertStatus(200);
     }
