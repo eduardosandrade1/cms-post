@@ -40,6 +40,8 @@ class UpdatePosts extends Component
 
     public $content_id;
 
+    public $register = false;
+
     protected $rules = [
         'image' => 'nullable',
         'image_order' => 'nullable|numeric',
@@ -80,6 +82,8 @@ class UpdatePosts extends Component
             'content_id' => $this->content_id,
         ]))->execute();
 
+        self::clear();
+        $this->register = true;
     }
 
     public function createListValues(){
@@ -114,6 +118,17 @@ class UpdatePosts extends Component
             }
 
         }
+    }
+
+    public function clear(){
+        $this->image = '';
+        $this->image_order = '';
+        $this->title = '';
+        $this->title_order = '';
+        $this->subtitle = '';
+        $this->subtitle_order = '';
+        $this->content = '';
+        $this->content_order = '';
     }
 
 }

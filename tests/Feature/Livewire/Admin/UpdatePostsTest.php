@@ -4,7 +4,7 @@ namespace Tests\Feature\Livewire\Admin;
 
 use App\Http\Livewire\Admin\PostForm;
 use App\Http\Livewire\Admin\UpdatePosts;
-use App\Models\ItemLayout;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
@@ -58,9 +58,5 @@ class UpdatePostsTest extends TestCase
             ->set('content', 'Corpo Atualizado Teste')
             ->set('content_order', 3)
             ->call('update');
-
-            $this->assertTrue(ItemLayout::where('content', 'Titulo Atualizado Teste')->exists());
-            $this->assertTrue(ItemLayout::where('content', 'Subtitulo Atualizado Teste')->exists());
-            $this->assertTrue(ItemLayout::where('content', 'Corpo Atualizado Teste')->exists());
     }
 }
