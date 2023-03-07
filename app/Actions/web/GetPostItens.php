@@ -10,6 +10,14 @@ final class GetPostItens implements PostItensContract
 
     public function execute()
     {
-        return Post::with('itens')->orderByDesc('order')->get();
+        return Post::orderByDesc('id')->with([
+            'itens',
+            'comments' => function ($builder) {
+                $builder->with('user');
+            },
+            'likes' => function ($builder) {
+                $builder->with('user');
+            },
+        ])->orderByDesc('order')->get();
     }
 }

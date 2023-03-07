@@ -14,4 +14,15 @@ class Post extends Model
     {
         return $this->hasMany(ItemLayout::class)->orderBy('order');
     }
+
+    public function comments()
+    {
+        return $this->hasMany(PostUserComment::class);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(PostUserLike::class);
+    }
+
 }
