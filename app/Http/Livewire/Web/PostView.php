@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire\Web;
 
+use App\Actions\Web\addCommentPost;
+use App\Actions\Web\addLikePost;
 use App\Actions\Web\GetPostItens;
 use App\Models\Post;
 use App\Models\PostUserComment;
@@ -54,36 +56,21 @@ class PostView extends Component
 
     public function addLikePost(int $postId)
     {
-        if ( ! Post::where('id', $postId)->exists() ) {
+        $responseActionLikePost = (new addLikePost())->execute($postId, Auth::user()->id);
+
+        if ( addLikePost::POST_DOESNT_EXISTS == $responseActionLikePost ) {
             $this->addError('post-not-exists', "O post ao qual tentou interagir pode ter sido removido. Atualize a página e tente novamente!");
             return;
         }
-
-        if ( PostUserLike::where('user_id', auth()->user()->id)->where('post_id', $postId)->exists() ) {
-            #
-            PostUserLike::where('user_id', auth()->user()->id)->where('post_id', $postId)->forceDelete();
-        } else {
-
-            PostUserLike::insert([
-                'post_id' => $postId,
-                'user_id' => auth()->user()->id,
-            ]);
-        }
-
-        $this->refreshCountLikes($postId);
 
     }
 
     public function addCommentPost(int $postId)
     {
 
-        $postComment = new PostUserComment();
-        $postComment->post_id = $postId;
-        $postComment->user_id = Auth::user()->id;
-        $postComment->content = $this->contentComment;
-        $postComment->save();
+        (new addCommentPost())->execute($postId, Auth::user()->id, $this->contentComment);
 
-        $this->refreshCountComments($postId);
+        $this->contentComment = '';
 
     }
 
