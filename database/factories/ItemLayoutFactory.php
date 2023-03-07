@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\ItemLayout;
+use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -22,12 +23,20 @@ class ItemLayoutFactory extends Factory
      */
     public function definition()
     {
+        $typeItems = [
+            'image',
+            'title',
+            'subtitle',
+            'description',
+        ];
+
         return [
-            'name' => $this->faker->name,
-            'email' => $this->faker->unique()->safeEmail,
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+            'text' => $this->faker->text(200),
+            'type' => $typeItems[rand(0, 3)],
+            'order' => rand(1, 4),
+            'post_id' => function () {
+                return Post::factory()->create();
+            }
         ];
     }
 }
