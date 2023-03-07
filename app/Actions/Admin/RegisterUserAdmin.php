@@ -13,7 +13,6 @@ final class RegisterUserAdmin implements RegisterUserAdminContract
     const USER_EMAIL_EXIST_DATABASE = 'user.email';
 
 
-
     public function execute(string $name, string $email, string $password, string $type)
     {
         if ( $this->existEmail($email) ) {

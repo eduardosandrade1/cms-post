@@ -1,5 +1,5 @@
 @if ($error)
-    <x-alert status="success" message="Está postagem não existe!" class="text-center"></x-alert>
+    <x-alert status="info" message="Está postagem não existe!" class="text-center"></x-alert>
 @else
     @foreach ($post->itens as $item)
         @if ($item->type == 'image')

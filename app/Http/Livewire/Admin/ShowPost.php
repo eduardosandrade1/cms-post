@@ -23,6 +23,6 @@ class ShowPost extends Component
             $this->error = true;
         }
 
-        return view('livewire.admin.show-post')->layout('layouts.admin.app', ['page' => '']);
+        return view('livewire.admin.show-post')->layout('layouts.admin.app', ['page' => 'user-register']);
     }
 }
