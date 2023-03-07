@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Admin;
+use App\Models\PostUserLike;
 use App\Models\User;
+use Database\Factories\UserFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,6 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->create();
+        User::factory(1)->create();
+        PostUserLike::factory(56)->create();
     }
 }
