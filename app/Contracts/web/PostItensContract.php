@@ -7,5 +7,5 @@ use App\Models\Post;
 interface PostItensContract
 {
 
-    public function execute(Post $Post);
+    public function execute();
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\Web;
 
 use App\Contracts\Web\PostItensContract;
 use App\Models\Post;
@@ -8,8 +8,8 @@ use App\Models\Post;
 final class GetPostItens implements PostItensContract
 {
 
-    public function execute(Post $post)
+    public function execute()
     {
-        return $post::with('itens')->orderByDesc('order')->get();
+        return Post::with('itens')->orderByDesc('order')->get();
     }
 }
