@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Actions\Auth;
+namespace App\Actions\Admin;
 
-use App\Contracts\RegisterUserAdminContract;
+use App\Contracts\Admin\RegisterUserAdminContract;
 use App\Models\User;
 
 final class RegisterUserAdmin implements RegisterUserAdminContract
 {
-
     const USER_SUCCESS = 'user.saved';
 
     const USER_EMAIL_EXIST_DATABASE = 'user.email';
@@ -23,7 +22,7 @@ final class RegisterUserAdmin implements RegisterUserAdminContract
             'name' => $name,
             'email' => $email,
             'password' => bcrypt($password),
-            'password' => bcrypt($password),
+            'type' => $type,
         ]);
 
         if ( $user ) {

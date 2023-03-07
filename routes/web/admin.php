@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware([
     'auth',
+    'admin.access'
     ])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/registrar/post', PostForm::class)->name('register.post');

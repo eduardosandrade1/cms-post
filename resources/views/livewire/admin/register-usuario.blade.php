@@ -1,7 +1,11 @@
 <form wire:submit.prevent="create" class="p-5 mb-4 bg-light rounded-3">
 
-    @if ($successMessage)
-        <x-alert status="success" message="{{ $successMessage }}"></x-alert>
+    @if (!empty($this->message))
+        <x-alert status="success" message="{{ $this->message }}"></x-alert>
+    @endif
+
+    @if (!empty($this->erro))
+        <x-alert status="danger" message="{{ $this->erro }}"></x-alert>
     @endif
     <h3>
         <strong>Register</strong>
@@ -36,3 +40,10 @@
         <x-button type="submit" text="Sumbit"></x-button>
     </div>
 </form>
+
+
+    <ul class="list-group">
+        @foreach ($users as $user)
+            <li class="list-group-item">{{$user->name}} - </li>
+        @endforeach
+    </ul>
