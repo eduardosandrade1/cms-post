@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Admin\Dashboard;
+use App\Http\Livewire\Admin\Error;
 use App\Http\Livewire\Admin\PostForm;
 use App\Http\Livewire\Admin\ShowPost;
 use App\Http\Livewire\Admin\ShowPostDeactivate;
