@@ -18,6 +18,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory(1)->create();
+
+        User::factory(1)->create([
+            'email' => 'admin@admin.com',
+            'type' => 'admin',
+        ]);
         PostUserLike::factory(56)->create();
     }
 }
