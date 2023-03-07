@@ -20,11 +20,12 @@ final class RegisterUser implements RegisterUserContract
             return self::USER_EMAIL_EXIST_DATABASE;
         }
 
-        $user = User::insert([
-            'name' => $name,
-            'email' => $email,
-            'password' => bcrypt($password),
-        ]);
+        $user = new User();
+        $user->name = $name;
+        $user->email = $email;
+        $user->password = bcrypt($password);
+        $user->type = 'user';
+        $user->save();
 
         if ( $user ) {
             return self::USER_SUCCESS;
