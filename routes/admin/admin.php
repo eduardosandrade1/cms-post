@@ -1,8 +1,10 @@
 <?php
 
+use App\Actions\Auth\RegisterUser;
 use App\Http\Livewire\Admin\Dashboard;
 use App\Http\Livewire\Admin\Error;
 use App\Http\Livewire\Admin\PostForm;
+use App\Http\Livewire\Admin\RegisterUsuario;
 use App\Http\Livewire\Admin\ShowPost;
 use App\Http\Livewire\Admin\ShowPostDeactivate;
 use App\Http\Livewire\Admin\ShowPosts;
@@ -17,5 +19,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/listar/posts', ShowPosts::class)->name('list.posts');
     Route::get('/listar/posts/desativados', ShowPostDeactivate::class)->name('list.posts.deactivate');
     Route::get('/post/{idPost?}', ShowPost::class)->name('list.post');
+
+    Route::get('/cadastrar/usuario', RegisterUsuario::class)->name('user.register');
 });
 
