@@ -35,6 +35,10 @@
 
                     Visualizar posts Desativados
                 </a>
+                <a href="{{route('admin.user.register')}}"
+                    class="{{$active == 'user-register' ? 'bg-indigo-800' : ''}} text-white hover:bg-indigo-600 hover:bg-opacity-75 group flex items-center rounded-md px-2 py-2 text-sm font-medium">
+                    Adicionar Administrator
+                </a>
             </nav>
         </div>
         {{-- <div class="flex flex-shrink-0 border-t border-indigo-800 p-4">
