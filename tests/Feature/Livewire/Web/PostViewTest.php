@@ -39,7 +39,7 @@ class PostViewTest extends TestCase
     /** @test */
     public function the_user_can_not_access_the_posts_without_authentication()
     {
-        $this->get(route('list.posts'))
+        $this->get(route('web.view-posts'))
             ->assertRedirect(route('login.create'));
     }
 

@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Admin;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -26,7 +26,7 @@ class PostFactory extends Factory
     {
         return [
             'admin_id' => function () {
-                return Admin::factory()->create()->id;
+                return User::factory()->create()->id;
             },
         ];
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Auth;
 
 use App\Actions\Auth\DoLogin;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class FormLogin extends Component
@@ -49,6 +50,9 @@ class FormLogin extends Component
 
         }
 
+        if ( 'admin' == Auth::user()->type ) {
+            return redirect()->route('admin.dashboard');
+        }
         return redirect()->route('web.view-posts');
 
     }
